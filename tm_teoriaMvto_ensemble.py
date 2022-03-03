@@ -10,6 +10,10 @@ import sys
 import numpy as np
 import pandas as pd
 
+pd.set_option('display.max_columns',100)
+pd.set_option('precision', 3)
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
 from feature_engine.imputation import MeanMedianImputer, ArbitraryNumberImputer
 from feature_engine.outliers import Winsorizer
 from feature_engine.wrappers import SklearnTransformerWrapper
@@ -27,12 +31,8 @@ from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline 
 from sklearn.feature_selection import SequentialFeatureSelector
 
-s_path = os.path.dirname(os.path.realpath(__file__))
+s_path = os.path.join("..", "explore")
 sys.path.append(s_path)
-
-pd.set_option('display.max_columns',100)
-pd.set_option('precision', 3)
-pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
 import tm_teoriaMvto_base_prep as base_prep
 import tm_teoriaMvto_label as tm_label
@@ -58,7 +58,7 @@ from skopt.callbacks import DeltaYStopper
 
 
 # %% configuration for labeling and loading
-path_files = os.path.join("..", "..", "explore", "historical_files")
+path_files = os.path.join("..", "explore", "historical_files")
 
 # base prep control
 EXPORT_X = False
